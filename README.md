@@ -1,62 +1,62 @@
-# Exercícios de C — Programação Avançada
+# C Exercises — Advanced Programming
 
-Repositório de laboratórios práticos para aprofundar **C e C++** além do básico: memória dinâmica, concorrência, estruturas de dados genéricas, redes, compilação, plugins dinâmicos e processamento de sinais. Cada exercício traz objetivo, requisitos, conceitos a praticar, abordagem sugerida e ideias de extensão.
+A repository of hands-on labs to deepen your **C and C++** skills beyond the basics: dynamic memory, concurrency, generic data structures, networking, compilation, dynamic plugins, and signal processing. Each exercise includes an objective, requirements, concepts to practice, a suggested approach, and extension ideas.
 
-Ideal para quem já domina sintaxe e tipos e quer treinar **engenharia de software de baixo nível** com projetos guiados e crescente complexidade.
-
----
-
-## Índice
-
-- [Visão geral](#visão-geral)
-- [Pré-requisitos](#pré-requisitos)
-- [Estrutura do repositório](#estrutura-do-repositório)
-- [Trilha de exercícios](#trilha-de-exercícios)
-- [Como estudar cada laboratório](#como-estudar-cada-laboratório)
-- [Soluções incluídas](#soluções-incluídas)
-- [Mapa de conceitos](#mapa-de-conceitos)
-- [Ferramentas recomendadas](#ferramentas-recomendadas)
-- [Contribuindo](#contribuindo)
-- [Licença](#licença)
+Ideal for those who already master syntax and types and want to practice **low-level software engineering** with guided projects of increasing complexity.
 
 ---
 
-## Visão geral
+## Table of Contents
 
-| Aspecto | Descrição |
-|--------|-----------|
-| **Formato** | 10 enunciados em Markdown (`01`–`10`) |
-| **Linguagens** | C (foco principal) e C++ (solução de referência do exercício 1) |
-| **Nível** | Intermediário a avançado |
-| **Soluções** | Parcial — [Exercício 1](SOLUTIONS/01-enhanced-text-adventure/) implementado |
-| **Objetivo** | Consolidar tópicos típicos de sistemas, algoritmos e engenharia de software |
-
-Os exercícios foram pensados como uma **progressão**: começam com I/O, memória e modularização; passam por parsing, sincronização e estruturas genéricas; e culminam em compilação, plugins e processamento em tempo real.
-
----
-
-## Pré-requisitos
-
-- Compilador **GCC** ou **Clang** (`gcc`, `g++`)
-- `make` e ferramentas de build básicas
-- Familiaridade com ponteiros, structs e alocação dinâmica
-- Para exercícios específicos:
-  - **Threads**: POSIX threads (`pthread`) ou equivalente
-  - **Rede**: sockets BSD (Linux/macOS) ou Winsock (Windows)
-  - **Plugins**: `dlopen` / `dlsym` (POSIX) ou `LoadLibrary` (Windows)
-  - **Memória**: Valgrind ou AddressSanitizer (recomendado no exercício 3)
-  - **Áudio/sinais** (exercício 10): noções de amostragem e filtros digitais
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Repository Structure](#repository-structure)
+- [Exercise Track](#exercise-track)
+- [How to Study Each Lab](#how-to-study-each-lab)
+- [Included Solutions](#included-solutions)
+- [Concept Map](#concept-map)
+- [Recommended Tools](#recommended-tools)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## Estrutura do repositório
+## Overview
+
+| Aspect | Description |
+|--------|-------------|
+| **Format** | 10 exercise prompts in Markdown (`01`–`10`) |
+| **Languages** | C (primary focus) and C++ (reference solution for exercise 1) |
+| **Level** | Intermediate to advanced |
+| **Solutions** | Partial — [Exercise 1](SOLUTIONS/01-enhanced-text-adventure/) implemented |
+| **Goal** | Consolidate topics typical of systems, algorithms, and software engineering |
+
+The exercises are designed as a **progression**: they begin with I/O, memory, and modularization; move on to parsing, synchronization, and generic structures; and culminate in compilation, plugins, and real-time processing.
+
+---
+
+## Prerequisites
+
+- **GCC** or **Clang** compiler (`gcc`, `g++`)
+- `make` and basic build tools
+- Familiarity with pointers, structs, and dynamic allocation
+- For specific exercises:
+  - **Threads**: POSIX threads (`pthread`) or equivalent
+  - **Networking**: BSD sockets (Linux/macOS) or Winsock (Windows)
+  - **Plugins**: `dlopen` / `dlsym` (POSIX) or `LoadLibrary` (Windows)
+  - **Memory**: Valgrind or AddressSanitizer (recommended for exercise 3)
+  - **Audio/signals** (exercise 10): basic knowledge of sampling and digital filters
+
+---
+
+## Repository Structure
 
 ```
-Exercicios-de-C/
-├── README.md                          # Este arquivo
-├── 01-enhanced-text-adventure.md      # Aventura textual com memória dinâmica
-├── 02-expression-evaluator.md         # Calculadora com precedência de operadores
-├── 03-memory-management-lab.md        # Laboratório de gerenciamento de memória
+C-Exercises/
+├── README.md                          # This file
+├── 01-enhanced-text-adventure.md      # Text adventure with dynamic memory
+├── 02-expression-evaluator.md         # Calculator with operator precedence
+├── 03-memory-management-lab.md        # Memory management laboratory
 ├── 04-concurrent-dining-philosophers.md
 ├── 05-generic-data-structures.md
 ├── 06-finite-state-machine-compiler.md
@@ -65,7 +65,7 @@ Exercicios-de-C/
 ├── 09-plugin-system.md
 ├── 10-real-time-signal-processing.md
 └── SOLUTIONS/
-    └── 01-enhanced-text-adventure/    # Solução de referência (C++)
+    └── 01-enhanced-text-adventure/    # Reference solution (C++)
         ├── src/
         ├── locations.txt
         ├── items.txt
@@ -73,144 +73,144 @@ Exercicios-de-C/
         └── README.md
 ```
 
-Cada arquivo `NN-nome.md` na raiz é um **enunciado autocontido**. Implemente seu código em pastas próprias (por exemplo `meu-trabalho/02-evaluator/`) ou contribua com novas soluções em `SOLUTIONS/`.
+Each `NN-name.md` file in the root is a **self-contained exercise prompt**. Implement your code in your own folders (e.g., `my-work/02-evaluator/`) or contribute new solutions to `SOLUTIONS/`.
 
 ---
 
-## Trilha de exercícios
+## Exercise Track
 
-### 01 — Aventura textual aprimorada
+### 01 — Enhanced Text Adventure
 
-**Arquivo:** [`01-enhanced-text-adventure.md`](01-enhanced-text-adventure.md)
+**File:** [`01-enhanced-text-adventure.md`](01-enhanced-text-adventure.md)
 
-Estender um mundo de texto com **memória dinâmica**, leitura de locais por arquivo, inventário, NPCs e save/load.
+Extend a text-based world with **dynamic memory**, file-based location loading, inventory, NPCs, and save/load.
 
-| Tópicos | I/O de arquivos, `malloc`/`realloc`/`free`, structs, modularização |
-| Dificuldade | ★★☆☆☆ |
-
----
-
-### 02 — Avaliador de expressões
-
-**Arquivo:** [`02-expression-evaluator.md`](02-expression-evaluator.md)
-
-Calculadora de linha de comando com `+`, `-`, `*`, `/`, `%`, parênteses, inteiros e ponto flutuante, respeitando **precedência e associatividade**.
-
-| Tópicos | Shunting Yard ou descida recursiva, pilhas, árvores de expressão |
-| Dificuldade | ★★★☆☆ |
+| Topics | File I/O, `malloc`/`realloc`/`free`, structs, modularization |
+| Difficulty | ★★☆☆☆ |
 
 ---
 
-### 03 — Laboratório de gerenciamento de memória
+### 02 — Expression Evaluator
 
-**Arquivo:** [`03-memory-management-lab.md`](03-memory-management-lab.md)
+**File:** [`02-expression-evaluator.md`](02-expression-evaluator.md)
 
-Allocator customizado (first-fit, best-fit), demonstrações de vazamentos, buffer overflow, use-after-free, double free e um **coletor de lixo** simples.
+Command-line calculator with `+`, `-`, `*`, `/`, `%`, parentheses, integers, and floating point, respecting **precedence and associativity**.
 
-| Tópicos | Segurança de memória, pools, Valgrind/ASan |
-| Dificuldade | ★★★★☆ |
-
----
-
-### 04 — Filósofos jantantes (concorrência)
-
-**Arquivo:** [`04-concurrent-dining-philosophers.md`](04-concurrent-dining-philosophers.md)
-
-Implementar o problema clássico com threads, evitando **deadlock** e **starvation**; comparar mutex, semáforos e hierarquia de recursos.
-
-| Tópicos | `pthread`, mutex, semáforos, condições de corrida |
-| Dificuldade | ★★★★☆ |
+| Topics | Shunting Yard or recursive descent, stacks, expression trees |
+| Difficulty | ★★★☆☆ |
 
 ---
 
-### 05 — Biblioteca de estruturas de dados genéricas
+### 03 — Memory Management Laboratory
 
-**Arquivo:** [`05-generic-data-structures.md`](05-generic-data-structures.md)
+**File:** [`03-memory-management-lab.md`](03-memory-management-lab.md)
 
-Lista encadeada, tabela hash e árvore binária de busca usando **`void*`** e **function pointers** para compare/copy/free.
+Custom allocator (first-fit, best-fit), demonstrations of leaks, buffer overflow, use-after-free, double free, and a simple **garbage collector**.
 
-| Tópicos | Programação genérica em C, callbacks, rehash |
-| Dificuldade | ★★★★☆ |
-
----
-
-### 06 — Compilador de máquinas de estado finitas
-
-**Arquivo:** [`06-finite-state-machine-compiler.md`](06-finite-state-machine-compiler.md)
-
-Linguagem para descrever FSMs e **geração de código C** (tabela de transições, ações de entrada/saída, guards).
-
-| Tópicos | Lexer, parser, geração de código, autômatos |
-| Dificuldade | ★★★★★ |
+| Topics | Memory safety, pools, Valgrind/ASan |
+| Difficulty | ★★★★☆ |
 
 ---
 
-### 07 — Chat em rede
+### 04 — Dining Philosophers (Concurrency)
 
-**Arquivo:** [`07-networked-chat-application.md`](07-networked-chat-application.md)
+**File:** [`04-concurrent-dining-philosophers.md`](04-concurrent-dining-philosophers.md)
 
-Servidor TCP multicliente, salas públicas, mensagens privadas e autenticação básica.
+Implement the classic problem with threads, avoiding **deadlock** and **starvation**; compare mutex, semaphores, and resource hierarchy.
 
-| Tópicos | Sockets, `select`/`poll` ou threads, protocolo de aplicação |
-| Dificuldade | ★★★★☆ |
-
----
-
-### 08 — Compilador de linguagem simples
-
-**Arquivo:** [`08-simple-language-compiler.md`](08-simple-language-compiler.md)
-
-Linguagem mínima com expressões, atribuições, `if`/`else`, `while` e `print`; pipeline **lexer → parser → semântica → código**.
-
-| Tópicos | AST, análise semântica, geração de assembly ou bytecode |
-| Dificuldade | ★★★★★ |
+| Topics | `pthread`, mutex, semaphores, race conditions |
+| Difficulty | ★★★★☆ |
 
 ---
 
-### 09 — Sistema de plugins
+### 05 — Generic Data Structures Library
 
-**Arquivo:** [`09-plugin-system.md`](09-plugin-system.md)
+**File:** [`05-generic-data-structures.md`](05-generic-data-structures.md)
 
-Aplicação host que carrega extensões em tempo de execução via **`dlopen`** / **`dlsym`** (ou API Windows), com versionamento e descoberta.
+Linked list, hash table, and binary search tree using **`void*`** and **function pointers** for compare/copy/free.
 
-| Tópicos | Bibliotecas dinâmicas, interfaces por ponteiros de função |
-| Dificuldade | ★★★★☆ |
-
----
-
-### 10 — Processamento de sinais em tempo real
-
-**Arquivo:** [`10-real-time-signal-processing.md`](10-real-time-signal-processing.md)
-
-Filtros FIR/IIR, FFT, efeitos de áudio e processamento por blocos com medição de latência.
-
-| Tópicos | DSP, métodos numéricos, otimização e visualização |
-| Dificuldade | ★★★★★ |
+| Topics | Generic programming in C, callbacks, rehash |
+| Difficulty | ★★★★☆ |
 
 ---
 
-## Como estudar cada laboratório
+### 06 — Finite State Machine Compiler
 
-1. **Leia o enunciado** — objetivo, requisitos e abordagem sugerida.
-2. **Defina o escopo** — implemente os requisitos obrigatórios antes das extensões.
-3. **Prototipe em C** — a maioria dos exercícios pede C puro; use C++ apenas se fizer sentido para você.
-4. **Teste de forma incremental** — um requisito por commit facilita revisão e debug.
-5. **Documente decisões** — um `README` curto na sua pasta de solução ajuda na revisão.
-6. **Compare com a solução de referência** (quando existir) após tentar sozinho.
+**File:** [`06-finite-state-machine-compiler.md`](06-finite-state-machine-compiler.md)
 
-Sugestão de ordem para iniciantes: `01 → 02 → 03 → 05 → 04 → 07 → 09 → 06 → 08 → 10`.
+A language for describing FSMs and **C code generation** (transition table, entry/exit actions, guards).
+
+| Topics | Lexer, parser, code generation, automata |
+| Difficulty | ★★★★★ |
 
 ---
 
-## Soluções incluídas
+### 07 — Networked Chat
 
-### Exercício 1 — Enhanced Text Adventure (C++17)
+**File:** [`07-networked-chat-application.md`](07-networked-chat-application.md)
 
-Local: [`SOLUTIONS/01-enhanced-text-adventure/`](SOLUTIONS/01-enhanced-text-adventure/)
+Multi-client TCP server, public rooms, private messages, and basic authentication.
 
-Implementação modular com carregamento de locais e itens por arquivo, inventário e comandos de save/load.
+| Topics | Sockets, `select`/`poll` or threads, application protocol |
+| Difficulty | ★★★★☆ |
 
-**Compilar e executar:**
+---
+
+### 08 — Simple Language Compiler
+
+**File:** [`08-simple-language-compiler.md`](08-simple-language-compiler.md)
+
+Minimal language with expressions, assignments, `if`/`else`, `while`, and `print`; **lexer → parser → semantic analysis → code generation** pipeline.
+
+| Topics | AST, semantic analysis, assembly or bytecode generation |
+| Difficulty | ★★★★★ |
+
+---
+
+### 09 — Plugin System
+
+**File:** [`09-plugin-system.md`](09-plugin-system.md)
+
+Host application that loads extensions at runtime via **`dlopen`** / **`dlsym`** (or Windows API), with versioning and discovery.
+
+| Topics | Dynamic libraries, function pointer interfaces |
+| Difficulty | ★★★★☆ |
+
+---
+
+### 10 — Real-Time Signal Processing
+
+**File:** [`10-real-time-signal-processing.md`](10-real-time-signal-processing.md)
+
+FIR/IIR filters, FFT, audio effects, and block-based processing with latency measurement.
+
+| Topics | DSP, numerical methods, optimization, and visualization |
+| Difficulty | ★★★★★ |
+
+---
+
+## How to Study Each Lab
+
+1. **Read the exercise prompt** — objective, requirements, and suggested approach.
+2. **Define the scope** — implement the required features before the extensions.
+3. **Prototype in C** — most exercises call for pure C; use C++ only if it makes sense for you.
+4. **Test incrementally** — one requirement per commit makes review and debugging easier.
+5. **Document decisions** — a short `README` in your solution folder helps with review.
+6. **Compare with the reference solution** (when available) after trying on your own.
+
+Suggested order for beginners: `01 → 02 → 03 → 05 → 04 → 07 → 09 → 06 → 08 → 10`.
+
+---
+
+## Included Solutions
+
+### Exercise 1 — Enhanced Text Adventure (C++17)
+
+Location: [`SOLUTIONS/01-enhanced-text-adventure/`](SOLUTIONS/01-enhanced-text-adventure/)
+
+Modular implementation with file-based location and item loading, inventory, and save/load commands.
+
+**Build and run:**
 
 ```bash
 cd SOLUTIONS/01-enhanced-text-adventure
@@ -218,32 +218,32 @@ make
 make run
 ```
 
-**Comandos no jogo:** `look`, `go <local>`, `inventory`, `take <item>`, `drop <item>`, `save`, `load`, `help`, `quit`.
+**In-game commands:** `look`, `go <location>`, `inventory`, `take <item>`, `drop <item>`, `save`, `load`, `help`, `quit`.
 
-Detalhes de formatos de arquivo (`locations.txt`, `items.txt`) e arquitetura estão no [README da solução](SOLUTIONS/01-enhanced-text-adventure/README.md).
+Details on file formats (`locations.txt`, `items.txt`) and architecture are in the [solution README](SOLUTIONS/01-enhanced-text-adventure/README.md).
 
-> **Nota:** A solução de referência usa containers da STL (`vector`, `unordered_map`), que gerenciam memória dinamicamente por baixo dos panos. Para alinhar ao enunciado original em C puro, reimplemente com `malloc`/`realloc`/`free` e structs.
+> **Note:** The reference solution uses STL containers (`vector`, `unordered_map`), which handle dynamic memory behind the scenes. To align with the original exercise prompt in pure C, reimplement using `malloc`/`realloc`/`free` and structs.
 
 ---
 
-## Mapa de conceitos
+## Concept Map
 
 ```mermaid
 flowchart LR
-    subgraph Fundamentos
+    subgraph Fundamentals
         A[01 Text Adventure]
         B[02 Expression Evaluator]
         C[03 Memory Lab]
     end
-    subgraph Estruturas e Concorrência
+    subgraph Structures and Concurrency
         D[05 Generic DS]
         E[04 Dining Philosophers]
     end
-    subgraph Sistemas
+    subgraph Systems
         F[07 Network Chat]
         G[09 Plugin System]
     end
-    subgraph Compilação e DSP
+    subgraph Compilation and DSP
         H[06 FSM Compiler]
         I[08 Simple Compiler]
         J[10 Signal Processing]
@@ -259,54 +259,54 @@ flowchart LR
     B --> J
 ```
 
-| Exercício | Conceitos centrais |
-|-----------|-------------------|
-| 01 | I/O, memória dinâmica, modularização |
-| 02 | Parsing, pilhas, precedência |
-| 03 | Allocators, segurança, GC |
+| Exercise | Core Concepts |
+|----------|---------------|
+| 01 | I/O, dynamic memory, modularization |
+| 02 | Parsing, stacks, precedence |
+| 03 | Allocators, safety, GC |
 | 04 | Threads, deadlock, starvation |
 | 05 | `void*`, function pointers, ADTs |
 | 06 | Lexer, parser, code generation |
-| 07 | TCP, concorrência, protocolos |
-| 08 | AST, semântica, compiladores |
-| 09 | `dlopen`, extensibilidade |
-| 10 | FFT, filtros, tempo real |
+| 07 | TCP, concurrency, protocols |
+| 08 | AST, semantics, compilers |
+| 09 | `dlopen`, extensibility |
+| 10 | FFT, filters, real-time |
 
 ---
 
-## Ferramentas recomendadas
+## Recommended Tools
 
-| Ferramenta | Uso |
-|------------|-----|
-| **GCC / Clang** | Compilação com `-Wall -Wextra -pedantic` |
-| **Valgrind** (`memcheck`) | Vazamentos e erros de heap (ex. 03) |
-| **AddressSanitizer** | `-fsanitize=address` em builds de debug |
-| **GDB / LLDB** | Depuração passo a passo |
-| **pthread** | Exercício 04 |
-| **Wireshark** (opcional) | Inspecionar tráfego do chat (07) |
-| **flex/bison** (opcional) | Acelerar lexer/parser nos exercícios 06 e 08 |
-
----
-
-## Contribuindo
-
-Contribuições são bem-vindas:
-
-1. Faça um fork do repositório.
-2. Crie uma branch para sua feature ou solução (`git checkout -b solucao/02-evaluator`).
-3. Adicione código em `SOLUTIONS/NN-nome/` com `README`, `Makefile` e instruções de build.
-4. Abra um Pull Request descrevendo o que foi implementado e como testar.
-
-Prioridade para novas soluções: exercícios **02** a **10** ainda sem implementação de referência.
+| Tool | Usage |
+|------|-------|
+| **GCC / Clang** | Compilation with `-Wall -Wextra -pedantic` |
+| **Valgrind** (`memcheck`) | Leaks and heap errors (e.g., exercise 03) |
+| **AddressSanitizer** | `-fsanitize=address` in debug builds |
+| **GDB / LLDB** | Step-by-step debugging |
+| **pthread** | Exercise 04 |
+| **Wireshark** (optional) | Inspect chat traffic (exercise 07) |
+| **flex/bison** (optional) | Speed up lexer/parser in exercises 06 and 08 |
 
 ---
 
-## Licença
+## Contributing
 
-Este repositório é material educacional. Consulte o autor do repositório para termos de uso específicos. Ao contribuir, você concorda em licenciar suas contribuições sob os mesmos termos do projeto.
+Contributions are welcome:
+
+1. Fork the repository.
+2. Create a branch for your feature or solution (`git checkout -b solution/02-evaluator`).
+3. Add code in `SOLUTIONS/NN-name/` with a `README`, `Makefile`, and build instructions.
+4. Open a Pull Request describing what was implemented and how to test it.
+
+Priority for new solutions: exercises **02** through **10** still lack a reference implementation.
 
 ---
 
-**Autor:** [douglasrocha91](https://github.com/douglasrocha91)
+## License
 
-Se este material foi útil, considere dar uma estrela no repositório e compartilhar com quem está aprendendo programação de sistemas em C.
+This repository is educational material. Consult the repository author for specific terms of use. By contributing, you agree to license your contributions under the same terms as the project.
+
+---
+
+**Author:** [douglasrocha91](https://github.com/douglasrocha91)
+
+If this material was helpful, consider starring the repository and sharing it with anyone learning systems programming in C.
